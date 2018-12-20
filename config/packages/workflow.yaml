@@ -1,0 +1,35 @@
+framework:
+    workflows:
+        blog_publishing:
+            type: 'workflow' # or 'state_machine'
+            audit_trail:
+                enabled: true
+            marking_store:
+                type: 'multiple_state' # or 'single_state'
+                arguments:
+                    - state
+            supports:
+                - App\Entity\BlogPost
+            initial_place: draft
+            places:
+                - draft
+                - review
+                - rejected
+                - published
+                - waiting
+            transitions:
+                to_review:
+                    from: draft
+                    to:   review
+                publish:
+                    from: review
+                    to:   published
+                reject:
+                    from: review
+                    to:   rejected
+                wait:
+                    from: review
+                    to:   waiting
+                list:
+                    from: waiting
+                    to:   review

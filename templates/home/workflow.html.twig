@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <img src="img/graph.svg"/>
+
+    {% for post in posts %}
+     <h1>{{ post.title }}</h1>
+        <br/><br/>
+        {{ post.content }}
+    <h3>Actions</h3>
+    {% if workflow_can(post, 'draft') %}
+        <a href="...">draft article</a>
+    {% endif %}
+    {% if workflow_can(post, 'review') %}
+        <a href="...">Submit to review</a>
+    {% endif %}
+    {% if workflow_can(post, 'reject') %}
+        <a href="...">Reject article</a>
+    {% endif %}
+
+    {# Or loop through the enabled transitions #}
+    {% for transition in workflow_transitions(post) %}
+        <a href="...">{{ transition.name }}</a>
+    {% else %}
+        No actions available.
+    {% endfor %}
+
+    {# Check if the object is in some specific place #}
+    {% if workflow_has_marked_place(post, 'review') %}
+        <p>This post is ready for review.</p>
+    {% endif %}
+
+    {# Check if some place has been marked on the object #}
+    {% if 'waiting' in workflow_marked_places(post) %}
+        <span class="label">PENDING</span>
+    {% endif %}
+    {% endfor %}
+{% endblock %}
