@@ -1,0 +1,92 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+        <div class="container">
+
+        <div class="blog-header">
+            <h1 class="blog-title"></h1>
+        </div>
+
+        <div class="row">
+
+            <div class="col-sm-8 blog-main">
+                {% for post in posts %}
+                <div class="blog-post">
+                    <h2 class="blog-post-title">{{ post.title }}</h2>
+                    {% for key, state in post.state %}
+                        {% if state %}
+                            <span class="label label-default">{{ key }}</span>
+                        {% endif %}
+                    {% endfor %}
+                    <p class="blog-post-meta">January 1, 2014 by <a href="#">Mark</a></p>
+
+                    <p>{{ post.content }}</p>
+                    <blockquote>
+                        <p>Available actions :
+                            {% if workflow_can(post, 'draft') %}
+                                <a href="{{ path('easyadmin') }}">Draft article</a>
+                            {% endif %}
+                            {% if workflow_can(post, 'review') %}
+                                <a href="...">Submit to review</a>
+                            {% endif %}
+                            {% if workflow_can(post, 'reject') %}
+                                <a href="...">Reject</a>
+                            {% endif %}
+                            {% if workflow_can(post, 'published') %}
+                                <a href="...">Publish</a>
+                            {% endif %}
+                            {% if workflow_can(post, 'waiting') %}
+                                <a href="...">Wait</a>
+                            {% endif %}
+                        </p>
+
+                        <p>Enabled transitions :
+                            {% for transition in workflow_transitions(post) %}
+                                <a href="...">{{ transition.name }}</a>
+                            {% else %}
+                                No actions available.
+                            {% endfor %}
+                        </p>
+
+                        {# Check if the object is in some specific place #}
+                        {% if workflow_has_marked_place(post, 'review') %}
+                            <p>This post is ready for review.</p>
+                        {% endif %}
+
+                        {# Check if some place has been marked on the object #}
+                        {% if 'waiting' in workflow_marked_places(post) %}
+                            <span class="label">PENDING</span>
+                        {% endif %}
+                    </blockquote>
+                </div><!-- /.blog-post -->
+                {% endfor %}
+
+                <nav>
+                    <ul class="pager">
+                        <li><a href="#">Previous</a></li>
+                        <li><a href="#">Next</a></li>
+                    </ul>
+                </nav>
+
+            </div><!-- /.blog-main -->
+
+            <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                <div class="sidebar-module sidebar-module-inset">
+                    <p> <img src="img/graph_blog_publishing.png"/></p>
+                    <p><img src="img/workflow.png"></p>
+                </div>
+            </div><!-- /.blog-sidebar -->
+
+        </div><!-- /.row -->
+
+    </div><!-- /.container -->
+
+    <footer class="blog-footer">
+        <p>
+            <a href="#">Back to top</a>
+        </p>
+    </footer>
+    {{ parent() }}
+{% endblock %}

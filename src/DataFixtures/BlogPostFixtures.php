@@ -26,25 +26,25 @@ class BlogPostFixtures extends Fixture
     {
         $post = new BlogPost();
         $post->setTitle('title1');
-        $post->setContent('Some content.');
+        $post->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis ipsum in laoreet molestie. Phasellus nunc neque, consectetur nec lectus non, lobortis pretium velit. Aenean in nisi erat. Cras arcu ante, euismod et eros vel, elementum vulputate felis.');
         $post->setState([ 'draft' => 1 ]);
         $manager->persist($post);
 
         $post = new BlogPost();
         $post->setTitle('title2');
-        $post->setContent('Some content.');
+        $post->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis ipsum in laoreet molestie. Phasellus nunc neque, consectetur nec lectus non, lobortis pretium velit. Aenean in nisi erat. Cras arcu ante, euismod et eros vel, elementum vulputate felis.');
         $post->setState([ 'review' => 1 ]);
         $manager->persist($post);
 
         $post = new BlogPost();
         $post->setTitle('title3');
-        $post->setContent('Some content.');
+        $post->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis ipsum in laoreet molestie. Phasellus nunc neque, consectetur nec lectus non, lobortis pretium velit. Aenean in nisi erat. Cras arcu ante, euismod et eros vel, elementum vulputate felis.');
         $post->setState([ 'waiting' => 1 ]);
         $manager->persist($post);
 
         $post = new BlogPost();
         $post->setTitle('title4');
-        $post->setContent('Some content.');
+        $post->setContent('Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas convallis ipsum in laoreet molestie. Phasellus nunc neque, consectetur nec lectus non, lobortis pretium velit. Aenean in nisi erat. Cras arcu ante, euismod et eros vel, elementum vulputate felis.');
         $post->setState([ 'rejected' => 1 ]);
         $manager->persist($post);
 

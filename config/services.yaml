@@ -26,3 +26,12 @@ services:
 
     # add more service definitions when explicit configuration is needed
     # please note that last definitions always *replace* previous ones
+
+    #
+    # App
+    #
+    App\Command\DumpGraphCommand:
+        arguments:
+            - 'blog_publishing'
+        tags:
+            - { name: 'console.command', command: 'app:dump_graph' }
