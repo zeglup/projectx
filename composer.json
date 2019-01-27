@@ -1,4 +1,6 @@
 {
+    "name": "zeglup/projectx",
+    "description": "A project for testing purposes.",
     "type": "project",
     "license": "proprietary",
     "require": {
