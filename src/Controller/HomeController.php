@@ -18,6 +18,11 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class HomeController extends AbstractController
 {
+    public function omg()
+    {
+        throw new \Exception('L\'application s\'est vautrée comme une loutre bourrée à la bière sur une pelure de concombre pas fraiche.');
+    }
+
     public function index(Request $request, KernelInterface $kernel)
     {
         // Generate some graph with command @todo: fix broken path
