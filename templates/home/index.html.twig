@@ -11,6 +11,7 @@
 
         <div class="row">
             <a href="{{ path('easyadmin') }}">/admin</a>
+            <a href="{{ path('fos_user_security_logout') }}">/logout</a>
             <div class="col-sm-8 blog-main">
                 {% for post in posts %}
                 <div class="blog-post">
@@ -35,7 +36,7 @@
                                 <a href="...">Reject</a>
                             {% endif %}
                             {% if workflow_can(post, 'published') %}
-                                <a href="...">Publish</a>
+                                <a href="{{ path('publish', {'id': post.id }) }}">Publish</a>
                             {% endif %}
                             {% if workflow_can(post, 'waiting') %}
                                 <a href="...">Wait</a>
@@ -44,7 +45,7 @@
 
                         <p>Enabled transitions :
                             {% for transition in workflow_transitions(post) %}
-                                <a href="...">{{ transition.name }}</a>
+                                <a href="{{ path(transition.name, {'id': post.id }) }}">{{ transition.name }}</a>
                             {% else %}
                                 No actions available.
                             {% endfor %}

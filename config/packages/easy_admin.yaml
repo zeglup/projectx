@@ -7,4 +7,9 @@ easy_admin:
                 fields:
                   - { property: 'title', help: 'Title' }
                   - { property: 'content', help: 'Content' }
-                  - { property: 'state', type: 'App\Form\Type\JsonType' }
+        User:
+            class: App\Entity\User
+            form:
+                fields:
+                    - { property: 'username', help: 'Username' }
+                    - { property: 'username', help: 'Email' }

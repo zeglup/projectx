@@ -1,6 +1,27 @@
 index:
     path: /
     controller: App\Controller\HomeController::index
+
+publish:
+    path: /publish/{id}
+    controller: App\Controller\HomeController::publishBlogPost
+
+to_review:
+    path: /review/{id}
+    controller: App\Controller\HomeController::toReview
+
+reject:
+    path: /reject/{id}
+    controller: App\Controller\HomeController::toReview
+
+wait:
+    path: /wait/{id}
+    controller: App\Controller\HomeController::toReview
+
+list:
+    path: /list/{id}
+    controller: App\Controller\HomeController::toReview
+
 omg:
     path: /omg
     controller: App\Controller\HomeController::omg

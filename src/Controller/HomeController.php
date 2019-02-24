@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Glup
- * Date: 20/12/2018
- * Time: 16:19
- */
 
 namespace App\Controller;
 
@@ -18,10 +12,6 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class HomeController extends AbstractController
 {
-    public function omg()
-    {
-        throw new \Exception('L\'application s\'est vautrée comme une loutre bourrée à la bière sur une pelure de concombre pas fraiche.');
-    }
 
     public function index(Request $request, KernelInterface $kernel)
     {
@@ -45,5 +35,44 @@ class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'posts' =>  $posts
         ]);
+    }
+
+    public function toReview(Request $request)
+    {
+
+    }
+
+    public function publishBlogPost(Request $request, $id)
+    {
+        $post = $this->getDoctrine()
+            ->getRepository(BlogPost::class)
+            ->find($id)
+        ;
+
+        try {
+
+            $workflow = $this->get('workflow.blog_publishing');
+
+
+            if ($workflow->can($post, 'publish')) {
+                $workflow->apply($post, 'published');
+            }
+
+            $this->getDoctrine()->getManager()->flush();
+
+            $this->addFlash('success', 'Approved');
+
+        } catch (\LogicException $e) {
+
+            $this->addFlash('danger', sprintf('No, that did not work: %s', $e->getMessage()));
+
+        }
+
+        return $this->redirectToRoute('index');
+    }
+
+    public function omg()
+    {
+        throw new \Exception('L\'application s\'est vautrée comme une loutre bourrée à la bière sur une pelure de concombre pas fraiche.');
     }
 }
