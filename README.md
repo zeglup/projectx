@@ -11,9 +11,9 @@ graphviz
 Todo
 
 ````
-link easyadmin event to workflow events
+link easyadmin event to workflow events (or not?)
 link api-platform with workflow : https://gist.github.com/soyuka/7c75933a6ae3d64940bb1d1f0d9fa9da
-intl to workflow
+i18n workflow
 ````
 
 
