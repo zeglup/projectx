@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8bfd5d438323457161813354cee89d5b",
+    "content-hash": "260bd04469b2d7c3aab91b9dcf91b0a0",
     "packages": [
         {
             "name": "alterphp/easyadmin-extension-bundle",
@@ -1703,16 +1703,16 @@
         },
         {
             "name": "nelmio/cors-bundle",
-            "version": "1.5.4",
+            "version": "1.5.5",
             "source": {
                 "type": "git",
                 "url": "https://github.com/nelmio/NelmioCorsBundle.git",
-                "reference": "548dc8ebd3984acd2f6d8787ab1dac2e9aa14254"
+                "reference": "adabee944e6fe52ee566caf1770a29355b1e8d83"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/548dc8ebd3984acd2f6d8787ab1dac2e9aa14254",
-                "reference": "548dc8ebd3984acd2f6d8787ab1dac2e9aa14254",
+                "url": "https://api.github.com/repos/nelmio/NelmioCorsBundle/zipball/adabee944e6fe52ee566caf1770a29355b1e8d83",
+                "reference": "adabee944e6fe52ee566caf1770a29355b1e8d83",
                 "shasum": ""
             },
             "require": {
@@ -1757,7 +1757,7 @@
                 "cors",
                 "crossdomain"
             ],
-            "time": "2017-12-11T18:41:54+00:00"
+            "time": "2019-02-27T13:13:15+00:00"
         },
         {
             "name": "nikic/php-parser",
@@ -5324,6 +5324,60 @@
                 "serialize"
             ],
             "time": "2019-01-16T20:35:37+00:00"
+        },
+        {
+            "name": "symfony/webpack-encore-bundle",
+            "version": "v1.2.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/webpack-encore-bundle.git",
+                "reference": "5035f5257927a4151fb0d2d3f3bd1dc5503b7c03"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/webpack-encore-bundle/zipball/5035f5257927a4151fb0d2d3f3bd1dc5503b7c03",
+                "reference": "5035f5257927a4151fb0d2d3f3bd1dc5503b7c03",
+                "shasum": ""
+            },
+            "require": {
+                "php": "^7.1.3",
+                "symfony/asset": "^3.4 || ^4.0",
+                "symfony/config": "^3.4 || ^4.0",
+                "symfony/contracts": "^1.0",
+                "symfony/dependency-injection": "^3.4 || ^4.0",
+                "symfony/http-kernel": "^3.4 || ^4.0"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^2.14",
+                "symfony/framework-bundle": "^3.4 || ^4.0",
+                "symfony/phpunit-bridge": "^3.4 || ^4.1",
+                "symfony/twig-bundle": "^3.4 || ^4.0",
+                "twig/twig": "^1.35 || ^2.0"
+            },
+            "type": "symfony-bundle",
+            "extra": {
+                "thanks": {
+                    "name": "symfony/webpack-encore",
+                    "url": "https://github.com/symfony/webpack-encore"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\WebpackEncoreBundle\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Integration with your Symfony app & Webpack Encore!",
+            "time": "2019-03-01T18:56:32+00:00"
         },
         {
             "name": "symfony/workflow",

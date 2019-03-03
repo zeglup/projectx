@@ -6,31 +6,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" href="{{ asset('build/images/favicon.png') }}" type="image/x-icon">
     <title>{% block title %}projectx{% endblock %}</title>
-    <link href="img/favicon.ico" rel="icon">
 
-    <!-- Bootstrap core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    {% block stylesheets %}
+        {# 'app' must match the first argument to addEntry() in webpack.config.js #}
+        {{ encore_entry_link_tags('app') }}
 
-    <!-- Custom styles for this template -->
-    <link href="css/blog.css" rel="stylesheet">
+        <!-- Renders a link tag (if your module requires any CSS)
+             <link rel="stylesheet" href="/build/app.css"> -->
+    {% endblock %}
 
-
-    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
 </head>
 
 <body>
 {% block body %}
 
     {% block javascripts %}
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
-        <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-        <script src="js/bootstrap.min.js"></script>
+        {{ encore_entry_script_tags('app') }}
+
+        <!-- Renders app.js & a webpack runtime.js file
+            <script src="/build/runtime.js"></script>
+            <script src="/build/app.js"></script> -->
     {% endblock %}
 
 {% endblock %}
