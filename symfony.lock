@@ -137,6 +137,19 @@
     "ocramius/proxy-manager": {
         "version": "2.2.2"
     },
+    "oneup/uploader-bundle": {
+        "version": "2.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.0",
+            "ref": "b19678d1535b9fe7cdf4647fd3483455e4fca458"
+        },
+        "files": [
+            "./config/packages/oneup_uploader.yaml",
+            "./config/routes/oneup_uploader.yaml"
+        ]
+    },
     "pagerfanta/pagerfanta": {
         "version": "v2.0.1"
     },
@@ -435,6 +448,9 @@
     },
     "willdurand/negotiation": {
         "version": "v2.3.1"
+    },
+    "zeglup/media-bundle": {
+        "version": "3.0.0"
     },
     "zendframework/zend-code": {
         "version": "3.3.1"

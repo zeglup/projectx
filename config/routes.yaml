@@ -25,3 +25,7 @@ list:
 omg:
     path: /omg
     controller: App\Controller\HomeController::omg
+
+oneup_uploader:
+    resource: .
+    type: uploader

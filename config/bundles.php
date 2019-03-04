@@ -20,4 +20,6 @@ return [
     FOS\UserBundle\FOSUserBundle::class => ['all' => true],
     AlterPHP\EasyAdminExtensionBundle\EasyAdminExtensionBundle::class => ['all' => true],
     Symfony\WebpackEncoreBundle\WebpackEncoreBundle::class => ['all' => true],
+    Donjohn\MediaBundle\DonjohnMediaBundle::class => ['all' => true],
+    Oneup\UploaderBundle\OneupUploaderBundle::class => ['all' => true],
 ];

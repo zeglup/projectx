@@ -33,6 +33,13 @@ class BlogPost
      */
     private $content;
 
+    /**
+     * @var Media
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"persist"}, inversedBy="blogPost")
+     * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL", nullable=true)
+     */
+    private $media;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -70,5 +77,17 @@ class BlogPost
     public function getState()
     {
         return $this->state;
+    }
+
+    public function getMedia(): ?Media
+    {
+        return $this->media;
+    }
+
+    public function setMedia(?Media $media): self
+    {
+        $this->media = $media;
+
+        return $this;
     }
 }

@@ -13,6 +13,7 @@
         "doctrine/annotations": "^1.6",
         "easycorp/easyadmin-bundle": "^2.0",
         "friendsofsymfony/user-bundle": "~2.0",
+        "oneup/uploader-bundle": "^2.1",
         "sensio/framework-extra-bundle": "^5.2",
         "symfony/asset": "4.2.*",
         "symfony/console": "4.2.*",
@@ -28,7 +29,8 @@
         "symfony/validator": "4.2.*",
         "symfony/webpack-encore-bundle": "^1.2",
         "symfony/workflow": "4.2.*",
-        "symfony/yaml": "4.2.*"
+        "symfony/yaml": "4.2.*",
+        "zeglup/media-bundle": "^3.0"
     },
     "config": {
         "preferred-install": {

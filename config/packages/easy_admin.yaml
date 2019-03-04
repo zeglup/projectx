@@ -5,8 +5,12 @@ easy_admin:
             class: App\Entity\BlogPost
             form:
                 fields:
-                  - { property: 'title', help: 'Title' }
-                  - { property: 'content', help: 'Content' }
+                    - title
+                    - { property: 'title', label: 'Title' }
+                    - content
+                    - { property: 'content', help: 'Content' }
+                    - media
+                    - { property: 'media', help: 'Media', type: 'Donjohn\MediaBundle\Form\Type\MediaType', type_options: { media_class: 'App\Entity\Media', multiple: false, provider: 'image' } }
         User:
             class: App\Entity\User
             form:
