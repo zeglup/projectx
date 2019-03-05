@@ -26,11 +26,19 @@ class Media extends BaseMedia
      * @var BlogPost
      * @ORM\OneToMany(targetEntity="App\Entity\BlogPost", mappedBy="media")
      */
-    private $blogPost;
+    private $blogPostMedia;
+
+    /**
+     * @var Media
+     * @ORM\ManyToMany(targetEntity="App\Entity\Media", mappedBy="medias")
+     */
+    private $blogPostMedias;
 
     public function __construct()
     {
         $this->blogPost = new ArrayCollection();
+        $this->blogPostMedia = new ArrayCollection();
+        $this->blogPostMedias = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -41,31 +49,60 @@ class Media extends BaseMedia
     /**
      * @return Collection|BlogPost[]
      */
-    public function getBlogPost(): Collection
+    public function getBlogPostMedia(): Collection
     {
-        return $this->blogPost;
+        return $this->blogPostMedia;
     }
 
-    public function addBlogPost(BlogPost $blogPost): self
+    public function addBlogPostMedium(BlogPost $blogPostMedium): self
     {
-        if (!$this->blogPost->contains($blogPost)) {
-            $this->blogPost[] = $blogPost;
-            $blogPost->setMedia($this);
+        if (!$this->blogPostMedia->contains($blogPostMedium)) {
+            $this->blogPostMedia[] = $blogPostMedium;
+            $blogPostMedium->setMedia($this);
         }
 
         return $this;
     }
 
-    public function removeBlogPost(BlogPost $blogPost): self
+    public function removeBlogPostMedium(BlogPost $blogPostMedium): self
     {
-        if ($this->blogPost->contains($blogPost)) {
-            $this->blogPost->removeElement($blogPost);
+        if ($this->blogPostMedia->contains($blogPostMedium)) {
+            $this->blogPostMedia->removeElement($blogPostMedium);
             // set the owning side to null (unless already changed)
-            if ($blogPost->getMedia() === $this) {
-                $blogPost->setMedia(null);
+            if ($blogPostMedium->getMedia() === $this) {
+                $blogPostMedium->setMedia(null);
             }
         }
 
         return $this;
     }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getBlogPostMedias(): Collection
+    {
+        return $this->blogPostMedias;
+    }
+
+    public function addBlogPostMedia(Media $blogPostMedia): self
+    {
+        if (!$this->blogPostMedias->contains($blogPostMedia)) {
+            $this->blogPostMedias[] = $blogPostMedia;
+            $blogPostMedia->addMedia($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogPostMedia(Media $blogPostMedia): self
+    {
+        if ($this->blogPostMedias->contains($blogPostMedia)) {
+            $this->blogPostMedias->removeElement($blogPostMedia);
+            $blogPostMedia->removeMedia($this);
+        }
+
+        return $this;
+    }
+
 }

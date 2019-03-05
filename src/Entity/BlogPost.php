@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,10 +37,22 @@ class BlogPost
 
     /**
      * @var Media
-     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"persist"}, inversedBy="blogPost")
+     * @ORM\ManyToOne(targetEntity="App\Entity\Media", cascade={"persist"}, inversedBy="blogPostMedia")
      * @ORM\JoinColumn(name="media_id", referencedColumnName="id", onDelete="SET NULL", nullable=true)
      */
     private $media;
+
+    /**
+     * @var Media
+     * @ORM\ManyToMany(targetEntity="App\Entity\Media", inversedBy="blogPostMedias", cascade={"persist"})
+     * @ORM\JoinTable(name="blog_post_medias")
+     */
+    private $medias;
+
+    public function __construct()
+    {
+        $this->medias = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -87,6 +101,32 @@ class BlogPost
     public function setMedia(?Media $media): self
     {
         $this->media = $media;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Media[]
+     */
+    public function getMedias(): Collection
+    {
+        return $this->medias;
+    }
+
+    public function addMedia(Media $media): self
+    {
+        if (!$this->medias->contains($media)) {
+            $this->medias[] = $media;
+        }
+
+        return $this;
+    }
+
+    public function removeMedia(Media $media): self
+    {
+        if ($this->medias->contains($media)) {
+            $this->medias->removeElement($media);
+        }
 
         return $this;
     }

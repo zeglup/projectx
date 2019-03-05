@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\BlogPost;
+use App\Form\Type\BlogPostType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Component\Console\Input\ArrayInput;
@@ -12,6 +13,21 @@ use Symfony\Component\HttpKernel\KernelInterface;
 
 class HomeController extends AbstractController
 {
+    public function media(Request $request)
+    {
+        $form = $this->createForm(BlogPostType::class, new BlogPost());
+        $form->handleRequest($request);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $this->getDoctrine()->getManager()->persist($form->getData());
+            $this->getDoctrine()->getManager()->flush();
+
+        }
+        return $this->render('home/media.html.twig', [
+            'form' => $form->createView()
+        ]);
+    }
+
 
     public function index(Request $request, KernelInterface $kernel)
     {

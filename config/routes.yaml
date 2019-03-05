@@ -2,6 +2,10 @@ index:
     path: /
     controller: App\Controller\HomeController::index
 
+media:
+    path: /media
+    controller: App\Controller\HomeController::media
+
 publish:
     path: /publish/{id}
     controller: App\Controller\HomeController::publishBlogPost

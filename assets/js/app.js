@@ -9,6 +9,8 @@
 require('../css/app.css');
 require('../css/bootstrap.min.css');
 require('../css/bootstrap-theme.min.css');
+require('../../node_modules/fine-uploader/all.fine-uploader/fine-uploader.css');
+require('../../node_modules/fine-uploader/all.fine-uploader/fine-uploader-gallery.css');
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');

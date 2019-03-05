@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div style="width: 50%">
+    {{ form(form) }}
+    </div>
+    {% block javascripts %}
+        {{ parent() }}
+        {{ encore_entry_script_tags('fineuploader') }}
+    {% endblock %}
+{% endblock %}
